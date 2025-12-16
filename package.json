@@ -18,9 +18,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "gendiff": "/gendiff.js"
+    "gendiff": "gendiff.js"
   },
   "dependencies": {
-    "commander": "^14.0.2"
+    "commander": "^14.0.2",
+    "lodash": "^4.17.21"
   }
 }
