@@ -15,13 +15,23 @@
   "type": "module",
   "main": "gendiff.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
+    "lint": "npx eslint .",
+    "coverage": "NODE_OPTIONS=--experimental-vm-modules npx jest --coverage"
   },
   "bin": {
     "gendiff": "gendiff.js"
   },
+  "jest": {
+    "transform": {},
+    "testEnvironment": "node"
+  },
   "dependencies": {
     "commander": "^14.0.2",
     "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "eslint": "^10.5.0",
+    "jest": "^30.4.2"
   }
 }
