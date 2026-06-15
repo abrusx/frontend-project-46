@@ -21,3 +21,15 @@ test.each(cases)('gendiff should compare %s files with nested structures', (form
   const result = genDiff(filepath1, filepath2, 'stylish');
   expect(result).toEqual(expected);
 });
+
+const plainCases = [
+  ['json', 'file1.json', 'file2.json', 'expected_plain.txt'],
+  ['yml', 'file1.yml', 'file2.yml', 'expected_plain.txt'],
+];
+
+test.each(plainCases)('genDiff plain format for %s', (format, file1, file2, expectedFile) => {
+  const filepath1 = getFixturePath(file1);
+  const filepath2 = getFixturePath(file2);
+  const expected = readFixture(expectedFile);
+  expect(genDiff(filepath1, filepath2, 'plain')).toEqual(expected);
+});
