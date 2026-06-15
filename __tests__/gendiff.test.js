@@ -33,3 +33,15 @@ test.each(plainCases)('genDiff plain format for %s', (format, file1, file2, expe
   const expected = readFixture(expectedFile);
   expect(genDiff(filepath1, filepath2, 'plain')).toEqual(expected);
 });
+
+const jsonCases = [
+  ['json', 'file1.json', 'file2.json', 'expected_json.txt'],
+  ['yml', 'file1.yml', 'file2.yml', 'expected_json.txt'],
+];
+
+test.each(jsonCases)('genDiff json format for %s', (format, file1, file2, expectedFile) => {
+  const filepath1 = getFixturePath(file1);
+  const filepath2 = getFixturePath(file2);
+  const expected = readFixture(expectedFile);
+  expect(genDiff(filepath1, filepath2, 'json')).toEqual(expected);
+});
