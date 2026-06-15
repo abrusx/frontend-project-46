@@ -1,10 +1,9 @@
 import fs from 'fs';
 import path from 'node:path';
-import { cwd } from 'node:process';
 import yaml from 'js-yaml';
 
 const parseFile = (filepath) => {
-  const fullPath = path.resolve(cwd(), filepath);
+  const fullPath = path.resolve(filepath);
   const fileExt = path.extname(fullPath).toLowerCase();
   const fileContent = fs.readFileSync(fullPath, 'utf8');
 

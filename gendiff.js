@@ -13,8 +13,13 @@ program
   .arguments('<filepath1> <filepath2>')
   .action((filepath1, filepath2) => {
     const options = program.opts();
-    const diff = genDiff(filepath1, filepath2, options.format);
-    console.log(diff);
+    try {
+      const diff = genDiff(filepath1, filepath2, options.format);
+      console.log(diff);
+    } catch (err) {
+      console.error(err.message);
+      process.exit(1);
+    }
   });
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
