@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
 import { fileURLToPath } from 'url';
+import path from 'path';
 import genDiff from './src/genDiff.js';
 
 const program = new Command();
@@ -22,7 +23,10 @@ program
     }
   });
 
-if (process.argv[1] === fileURLToPath(import.meta.url)) {
+const isMainModule = process.argv[1]
+  && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+
+if (isMainModule) {
   program.parse(process.argv);
 }
 
